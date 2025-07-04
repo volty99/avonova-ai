@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light mode variables (default) */
+:root {
+  --background: #ffffff;
+  --surface: #ffffff;
+  --surface-light: #f3f4f6;
+  --border: #e5e7eb;
+  --text-primary: #171717;
+  --text-secondary: #4b5563;
+  --accent: #2563EB;
+  --accent-hover: #3B82F6;
+  --surface-settings: #eceef2;
+
+  /* Dark palette (not active by default) */
+  --bg-dark: #181A20;
+  --surface-dark: #23262F;
+  --surface-light-dark: #2D313A;
+  --border-dark: #2D313A;
+  --text-primary-dark: #F4F6FA;
+  --text-secondary-dark: #A3A7B7;
+  --accent-dark: #2563EB;
+  --accent-dark-hover: #3B82F6;
+  --hero-bg: #eceef2;
+}
+
+/* Dark mode variables (only active when .dark is on <html>) */
+html.dark {
+  --background: var(--bg-dark);
+  --surface: var(--surface-dark);
+  --surface-light: var(--surface-light-dark);
+  --border: var(--border-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --accent: var(--accent-dark);
+  --accent-hover: var(--accent-dark-hover);
+  --hero-bg: #23262F;
+  --surface-settings: #23262F;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: sans-serif, 'Segoe UI', Arial;
+  min-height: 100vh;
+}
+
+/* Utility classes for backgrounds, text, and borders */
+.bg-gradient-hero {
+  background: var(--hero-bg);
+}
+
+.card {
+  @apply rounded-2xl shadow-lg bg-[var(--surface)] transition-transform duration-200;
+}
+
+.card-hover:hover {
+  @apply scale-105 shadow-2xl;
+}
+
+.btn-primary {
+  @apply font-semibold rounded-lg px-6 py-3 shadow transition-colors duration-150 flex items-center gap-2;
+  background: var(--accent);
+  color: white;
+  border: 1.5px solid var(--accent);
+}
+html:not(.dark) .btn-primary {
+  background: white;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+html.dark .btn-primary {
+  background: var(--accent);
+  color: white;
+  border: 1.5px solid var(--accent);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  color: white;
+}
+html:not(.dark) .btn-primary:hover {
+  background: var(--accent-hover);
+  color: white;
+}
+
+.btn-secondary {
+  @apply font-semibold rounded-lg px-6 py-3 shadow transition-colors duration-150 flex items-center gap-2;
+  background: white;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+html.dark .btn-secondary {
+  background: var(--accent);
+  color: white;
+  border: 1.5px solid var(--accent);
+}
+.btn-secondary:hover {
+  background: var(--accent-hover);
+  color: white;
+}
+html:not(.dark) .btn-secondary:hover {
+  background: var(--accent-hover);
+  color: white;
+}
+
+.btn-success {
+  @apply bg-[var(--color-success)] text-white font-semibold rounded-lg px-6 py-3 shadow hover:bg-emerald-700 transition-colors duration-150 flex items-center gap-2;
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 24px 0 rgba(37,99,235,0.08), 0 1.5px 4px 0 rgba(15,23,42,0.04);
+}
+
+.text-hero {
+  @apply text-5xl font-extrabold text-[var(--accent)] leading-tight;
+}
+
+.text-section {
+  @apply text-3xl font-bold text-[var(--text-primary)] mb-4;
+}
+
+.text-muted {
+  @apply text-[var(--text-secondary)];
+}
+
+.transition-scale {
+  @apply transition-transform duration-200;
+}
